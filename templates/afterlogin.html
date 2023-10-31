@@ -1,0 +1,347 @@
+{% extends "base.html" %}
+{% block afterlogin %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/71fda7b2a0.js" crossorigin="anonymous"></script>
+</head>
+<style>
+    *{
+    margin: 0;
+    padding: 0;
+    font-family: 'poppins', sans-serif;
+    box-sizing: border-box;
+}
+body{
+    background: #080808;
+    color: #fff;
+    background-color: black;
+ }
+ #header{
+     width: 100%;
+     height: 100vh;
+     background-image:url(images/rachael.png);
+     background-size:cover;
+     background-position: center;
+ }
+ .container{
+     padding: 10px 10%;
+ }
+ nav{
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     flex-wrap: wrap;
+ }
+ .logo{
+     width: 140px;
+ }
+ nav ul li{
+     display: inline-block;
+     list-style: none;
+     margin: 10px 20px;
+ }
+ nav ul li a{ 
+ color: #fff;
+ text-decoration: none;
+ font-size: 18px;
+ position: relative;
+ }
+ nav ul li a::after{
+     content: '';
+     width: 0%;
+     height: 3px;
+     background: #ff004f;
+     position: absolute;
+     left: 0;
+     bottom: -6px;
+     transform: 0.5s;
+ }
+ nav ul li a:hover::after{
+     width: 100%;
+ }
+ .header-text{
+     margin-top: 20%;
+     font-size: 30px;
+ }
+ .header-text h1{
+     font-size: 60px;
+     margin-top: 20px;
+ }
+ .header-text h1 span{
+     color: #ff004f;
+ }
+/*-------About-------*/
+#About{
+    padding: 60px 0;
+    color: #ababab;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.About-col-1{
+    flex-basis: 35%;
+}
+.About-col-1 img{
+    width: 100%;
+    border-radius: 15px;
+}
+.About-col-2{
+    flex-basis: 60%;
+}
+.sub-title{
+    font-size: 60px;
+    font-weight: 600;
+    color: #fff;
+}
+.tab-titles{
+    display: flex;
+    margin: 20px 0 40px;
+}
+.tab-links{
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+}
+.tab-links::after{
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #ff004f;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    transition: 0.5s;
+}
+.tab-links.active-link::after{
+    width: 50%;
+}
+.tab-contents ul li{
+    list-style: none;
+    margin: 10px 0;
+}
+.tab-contents ul li span{
+    color: #b54769;
+    font-size: 14px;
+}
+.tab-contents{
+    display: none;
+}
+.tab-contents.active-tab{
+    display: block;
+}
+
+/*--------Services--------*/
+#Services{
+    padding: 30px 0;
+}
+.Services-List{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+.Services-List div{
+    background: #262626;
+    padding: 40px;
+    font-size: 13px;
+    font-weight: 300;
+    border-radius: 10px;
+    transition: background 0.5s, transform 0.5s;
+}
+.Services-List div i{
+    font-size: 50px;
+    margin-bottom: 30px;
+}
+.Services-List div h2{
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+.Services-List div a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+    margin-top: 20px;
+    display: inline-block;
+}
+.Services-List div:hover{
+    background: #ff004f;
+    transform: translateY(-10px);
+}
+/*-------Portfolio--------*/
+#Portfolio{
+    padding: 50px 0;
+}
+.work-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+.work{
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+.work img{
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.5s;
+}
+.layer{
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(rgba(0,0,0,0.6), #ff004f);
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 14px;
+    transition: height 0.5s;
+}
+.layer h3{
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.work:hover img{
+    transform: scale(1.1);
+}
+.work:hover .layer{
+    height: 100%;
+}
+/*--------Contact---------*/
+.contact-left{
+    flex-basis: 35%;
+}
+.contact-right{
+    flex-basis: 60%;
+}
+.contact-left p{
+    margin-top: 30px;
+}
+.contact-left p i{
+    color: #ff004f;
+    margin-right: 15px;
+    font-size: 25px;
+}
+.social-icons{
+    margin-top: 30px;
+}
+.social-icons a{
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: #ababab;
+    display: inline-block;
+    transition: transform 0.5s;
+}
+.social-icons a:hover{
+    color: #ff004f;
+    transform: translateY(-5px);
+}
+/* download Button style starts here */
+.download_btn{
+    margin: 10px 0;
+    padding: 10px 5px;
+    /* border: 1px solid white; */
+    background-color: #ff004f;
+    border-radius: 4px;
+    width: 150px;
+    text-align: center;
+}
+.download_btn a{
+    text-decoration: none;
+    font-weight: 300;
+    color: #fff;
+}
+/* download button style ends here  */
+table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+</style>
+</head>
+
+<body>
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li style="border: solid 2px rgb(44, 43, 43); background-color: rgb(44, 43, 43); color: white;"><h2>{{ message }}</h2></li>
+
+    {% endfor %}
+</ul>
+{% endif %}
+    <div id="header">
+ <div class="container"><br>
+    {% for i in showimage %}
+<nav> 
+    <img src ="{{ i.templateimage.url }}" alt="Proposal Image" width="150" height="200">  
+</nav>
+<br>
+<button><a style="text-decoration:none"  href="http://127.0.0.1:8000/coustmerpreview/{{i.id}}">Preview {{i.templatename}}</a></button>
+<button><a style="text-decoration:none"  href="http://127.0.0.1:8000/createproposal/{{i.id}}">CREATE</a></button><br>
+{% endfor %}
+<div class="header-text">
+<h2 style="color: rgb(81, 87, 131);">PYTHON AND DJANGO DEVELOPER</h2>
+
+<h1><span>CUSTOM TENDER BUSINESS PROPOSAL </span></h1><br><br>  
+</div>
+
+<h1 style="border: 1px solid black; color: #b54769;">PROPOSAL PREVIEW AFTER CREATE</h1>
+
+    <table style="border: 20 px solid black; background-color: black;">
+      <tr>
+        <br><br>
+        <th style="background-color: black; color: antiquewhite; text-align: center;">TEMPLATE</th>
+        <th style="background-color: black; color: antiquewhite; text-align: center;">COMAPNY NAME</th>
+        <th style="background-color: black; color: antiquewhite; text-align: center;">CREATED DATE</th>
+        <th  style="background-color: black; color: antiquewhite; text-align: center;">TITLE </th>
+        <th style="background-color: black; color: antiquewhite; text-align: center;">ACTION </th>
+      </tr>
+      {% for i in showdata %}
+
+      <tr>
+        <td  style="color: white; text-align: center;"><img src="{{ i.templatesdetail.templateimage.url }}" alt=""width="100" height="100"> </td>
+        <td style="color: white; text-align: center;">{{ i.companyname }}</td>
+        <td style="color: white; text-align: center;">{{ i.created_at }}</td>
+        <td style="color: white; text-align: center;">{{ i.title }}</td>
+        <td><button class="btn btn-primary"><i class="fa fa-edit"></i><a style="text-decoration:none"  href="http://127.0.0.1:8000/editproposal/{{i.id}}">EDIT</a></button> 
+            <button class="btn btn-sucess"><i class="fa fa-eye"></i><a style="text-decoration:none"  href="http://127.0.0.1:8000/aftercreate/{{i.id}}">PREVIEW</a></button>     
+            <button class="btn btn-danger"><i class="fa fa-danger"></i><a style="text-decoration:none"  href="http://127.0.0.1:8000/deleteproposal/{{i.id}}">DELETE</a></button>
+          </td>
+      </tr>
+      {% endfor %}
+    </table>
+</body>
+</html>
+{% endblock %}
+ 
